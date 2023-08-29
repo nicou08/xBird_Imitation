@@ -35,10 +35,23 @@ const LeftSideBarItem: React.FC<LeftSideBarItemProps> = ({
       >
         {icon}
       </div>
-      <div className="relative hidden lg:flex items-row gap-4 p-4 rounded-full items-row hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer items-center">
+      <div 
+        className="
+          relative 
+          hidden 
+          lg:flex 
+          items-row 
+          gap-4 
+          p-4 
+          rounded-full 
+          items-row 
+          hover:bg-slate-300 
+          hover:bg-opacity-10 
+          cursor-pointer 
+          items-center">
         {icon}
         <p className="hidden lg:block text-heading4-medium text-light-1">
-          {label}
+          {label}&nbsp;&nbsp;&nbsp;
         </p>
       </div>
     </Link>

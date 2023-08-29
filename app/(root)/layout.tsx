@@ -5,7 +5,7 @@ import { Inter } from "next/font/google";
 import TopBar from "@/components/shared/TopBar";
 import BottomBar from "@/components/shared/BottomBar";
 import LeftSideBar from "@/components/shared/LeftSideBar/LeftSideBar";
-import RightSideBar from "@/components/shared/RightSideBar";
+import RightSideBar from "@/components/shared/RightSideBar/RightSideBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,11 +28,18 @@ export default function RootLayout({
             <main className="grid grid-cols-4 h-full">
               <LeftSideBar />
 
-              <section className="col-span-3 lg:col-span-2 border-x[1px] border border-neutral-800">
+              <section
+                className="
+                col-span-3 
+                lg:col-span-2 
+                border-x[1px] 
+                border 
+                border-neutral-800"
+              >
                 {children}
               </section>
 
-              {/* <RightSideBar /> */}
+              <RightSideBar />
             </main>
           </div>
 

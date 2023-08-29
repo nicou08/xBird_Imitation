@@ -33,12 +33,6 @@ export const sidebarLinks = [
     label: "Profile",
     icon: <BsPerson size={30} color="white" />,
   },
-  {
-    imgURL: "/assets/tweet-bird-2.svg",
-    route: "/create-thread",
-    label: "Tweet",
-    icon: <BiHomeCircle size={30} color="white" />,
-  },
 ];
 
 export const profileTabs = [

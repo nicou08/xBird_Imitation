@@ -1,7 +1,10 @@
+import Header from "@/components/shared/Main/Header";
+
 export default function Home() {
   return (
     <>
-      <h1 className="head-text text-left">Threads</h1>
+      <Header label="Home" />
+      <h1 className="head-text text-left">Tweeter X</h1>
     </>
   );
 }
