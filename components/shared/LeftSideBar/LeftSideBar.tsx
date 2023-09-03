@@ -16,7 +16,7 @@ const LeftSideBar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="col-span-1 h-full pr-4 md:pr-6">
+    <section className="hidden md:block col-span-1 h-full pr-4 md:pr-6">
       <div className="flex flex-col items-end h-full">
         <div className="lg-w-[230px] h-full">
           <LeftSideBarLogo />

@@ -35,7 +35,7 @@ const LeftSideBarItem: React.FC<LeftSideBarItemProps> = ({
       >
         {icon}
       </div>
-      <div 
+      <div
         className="
           relative 
           hidden 
@@ -48,7 +48,8 @@ const LeftSideBarItem: React.FC<LeftSideBarItemProps> = ({
           hover:bg-slate-300 
           hover:bg-opacity-10 
           cursor-pointer 
-          items-center">
+          items-center"
+      >
         {icon}
         <p className="hidden lg:block text-heading4-medium text-light-1">
           {label}&nbsp;&nbsp;&nbsp;

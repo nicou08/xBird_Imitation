@@ -1,11 +1,14 @@
 import "../globals.css";
-import { SessionProvider } from "next-auth/react";
+
+import NextAuthProvider from "@/context/NextAuthProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import TopBar from "@/components/shared/TopBar";
-import BottomBar from "@/components/shared/BottomBar";
+
+import BottomBar from "@/components/shared/BottomBar/BottomBar";
 import LeftSideBar from "@/components/shared/LeftSideBar/LeftSideBar";
 import RightSideBar from "@/components/shared/RightSideBar/RightSideBar";
+
+import MainContent from "@/components/shared/content";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,18 +23,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <html lang="en">
-        <body className={`${inter.className} bg-black h-screen`}>
-          {/* <TopBar /> */}
-          <div className="container h-full mx-auto xl:px-30 max-w-6xl">
-            <main className="grid grid-cols-4 h-full">
+    <html lang="en">
+      <body className={`${inter.className} bg-black h-screen`}>
+        <NextAuthProvider>
+          {/* Here add modals and toaster */}
+
+          {/* Here add modals and toaster */}
+
+          {/* Here add modals and toaster */}
+
+          {/* Here add modals and toaster */}
+
+          {/* <div className="container h-full mx-auto xl:px-30 max-w-6xl">
+            <main className="grid lg:grid-cols-4 md:grid-cols-8 grid-cols-1 h-full">
               <LeftSideBar />
 
               <section
                 className="
-                col-span-3 
-                lg:col-span-2 
+                col-span-1
+                md:col-span-5
+                lg:col-span-2
                 border-x[1px] 
                 border 
                 border-neutral-800"
@@ -40,12 +51,14 @@ export default function RootLayout({
               </section>
 
               <RightSideBar />
-            </main>
-          </div>
 
-          {/* <BottomBar /> */}
-        </body>
-      </html>
-    </>
+              <BottomBar />
+            </main>
+          </div> */}
+
+          <MainContent>{children}</MainContent>
+        </NextAuthProvider>
+      </body>
+    </html>
   );
 }

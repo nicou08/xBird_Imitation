@@ -1,15 +1,9 @@
-import { SessionProvider } from "next-auth/react";
-import { Session } from "next-auth";
-import { Inter } from "next/font/google";
-
 import "../globals.css";
 
 export const metadata = {
-  title: "Twitter Threads",
-  description: "A Next.js 13 Twitter Threads Clone",
+  title: "Log in to Twitter / X",
+  description: "Twitter Clone",
 };
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -18,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="inter.className">{children}</body>
+      <body className="bg-black h-screen">{children}</body>
     </html>
   );
 }
