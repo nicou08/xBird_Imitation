@@ -1,9 +1,18 @@
 "use client";
 
+import useSigninModal from "@/hooks/useSignInModal";
+import { useCallback } from "react";
+
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 
 export default function Welcome() {
+  const signInModal = useSigninModal();
+
+  const onClick = useCallback(() => {
+    signInModal.onOpen();
+  }, [signInModal]);
+
   return (
     <div className="flex flex-col md:flex-row">
       <div className="hidden md:block md:w-1/2">
@@ -21,7 +30,7 @@ export default function Welcome() {
         <div className="text-light-2 text-heading3-bold pl-10">Join Today.</div>
         <div className="p-10">
           <button
-            onClick={() => signIn()}
+            onClick={onClick}
             className="bg-black hover:bg-sky-800 hover:bg-opacity-30 text-blue text-base-semibold rounded-full outline outline-1 outline-neutral-500 w-80 h-10"
           >
             Sign in

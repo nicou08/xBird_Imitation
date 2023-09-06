@@ -1,3 +1,5 @@
+"use client";
+
 interface ButtonProps {
   label: string;
   secondary: boolean;
@@ -24,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       className={`
         disabled:opacity-70
         disabled:cursor-not-allowed
-        rouded-full
+        rounded-full
         hover:opacity-80
         transition
         border-2
