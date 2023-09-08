@@ -19,7 +19,7 @@ export default function Home() {
       <h1 className="head-text text-left">
         Tweeterrr X12345 1234 5123 45 123 34 56
       </h1>
-      <p className="text-light-1"> Test of the frame</p>
+      <p className="text-light-1"> Test of the frame asdfasdfasdf</p>
     </>
   );
 }
