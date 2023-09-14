@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from "@/lib/prismadb";
 import { authOptions } from "@/lib/authOpt";
-import { getServerSession } from "next-auth/next";
-//import { getServerSession } from 'next-auth';
+//import { getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth";
 
 const serverAuth = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getServerSession(req, res, authOptions);

@@ -30,11 +30,11 @@ const SignInModal = () => {
     try {
       setIsLoading(true);
 
-      // await signIn("credentials", {
-      //   email,
-      //   password,
-      //   redirect: false,
-      // })
+      await signIn("credentials", {
+        email,
+        password,
+        callbackUrl: "/",
+      });
 
       signInModal.onClose();
     } catch (error) {
@@ -42,7 +42,7 @@ const SignInModal = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [signInModal]);
+  }, [signInModal, email, password]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -54,6 +54,7 @@ const SignInModal = () => {
       />
       <Input
         placeholder="Password"
+        type="password"
         onChange={(e) => setPassword(e.target.value)}
         value={password}
         disabled={isLoading}

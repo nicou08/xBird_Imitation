@@ -1,4 +1,6 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/authOpt";
+import { redirect } from "next/navigation";
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -8,20 +10,30 @@ import Image from "next/image";
 import BottomBar from "@/components/shared/BottomBar/BottomBar";
 import LeftSideBar from "@/components/shared/LeftSideBar/LeftSideBar";
 import RightSideBar from "@/components/shared/RightSideBar/RightSideBar";
+import { get } from "http";
 
 interface MainContentProps {
   children: React.ReactNode;
 }
 
-const MainContent: React.FC<MainContentProps> = ({ children }) => {
-  const { data: session } = useSession();
-  const router = useRouter();
+// const MainContent: React.FC<MainContentProps> = ({ children }) => {
+// const { data: session } = useSession();
+// const router = useRouter();
 
-  useEffect(() => {
-    if (!session) {
-      router.push("/sign-in");
-    }
-  }, [session, router]);
+// useEffect(() => {
+//   if (!session) {
+//     router.push("/sign-in");
+//   }
+// }, [session, router]);
+const MainContent = async ({ children }: { children: React.ReactNode }) => {
+  const session = await getServerSession(authOptions);
+
+  console.log("here is session:");
+  console.log(session);
+
+  if (session === null) {
+    return redirect("/sign-in");
+  }
 
   return (
     <>

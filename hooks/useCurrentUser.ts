@@ -1,0 +1,17 @@
+import useSWR from "swr";
+
+import fetcher from "@/lib/fetcher";
+
+// SWR is going to fetch /api/current using the axios fetcher and store it in its global stored
+const userCurrentUser = () => {
+  const { data, error, isLoading, mutate } = useSWR("/api/current", fetcher);
+
+  return {
+    data,
+    error,
+    isLoading,
+    mutate,
+  };
+};
+
+export default userCurrentUser;

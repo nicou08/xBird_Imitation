@@ -7,6 +7,7 @@ interface LeftSideBarItemProps {
   label: string;
   route: string;
   icon: React.ReactElement;
+  onClick?: () => void;
   auth?: boolean;
 }
 
