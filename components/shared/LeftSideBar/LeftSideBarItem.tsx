@@ -3,24 +3,6 @@ import { useRouter, usePathname } from "next/navigation";
 import { IconType } from "react-icons";
 import { signOut } from "next-auth/react";
 
-// interface LeftSideBarItemProps {
-//   key: string;
-//   label: string;
-//   route: string;
-//   icon: React.ReactElement;
-//   onClick?: () => void;
-//   auth?: boolean;
-// }
-
-// const LeftSideBarItem: React.FC<LeftSideBarItemProps> = ({
-//   key,
-//   label,
-//   route,
-//   icon,
-// }) => {
-//   if (label == "Logout") {
-//     onClick = () => signOut({ callbackUrl: "/sign-in" });
-//   }
 const LeftSideBarItem = ({
   key,
   label,
