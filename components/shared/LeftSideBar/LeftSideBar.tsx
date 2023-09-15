@@ -5,15 +5,14 @@ import LeftSideBarLogo from "./LeftSideBarLogo";
 import LeftSideBarItem from "./LeftSideBarItem";
 import TweetButton from "./TweetButton";
 
-import Link from "next/link";
-import Image from "next/image";
+import { signOut } from "next-auth/react";
 
 import { usePathname, useRouter } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
 
 const LeftSideBar = () => {
-  const router = useRouter();
-  const pathname = usePathname();
+  // const router = useRouter();
+  // const pathname = usePathname();
 
   return (
     <section className="hidden md:block col-span-1 h-full pr-4 md:pr-6">
@@ -41,7 +40,8 @@ const LeftSideBar = () => {
             <LeftSideBarItem
               key={"Logout"}
               label={"Logout"}
-              route={"/"}
+              route={"/sign-in"}
+              onClick={() => signOut()}
               icon={<BiLogOut size={30} color="white" />}
             />
           </div>

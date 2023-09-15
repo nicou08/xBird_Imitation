@@ -1,8 +1,5 @@
 import "../globals.css";
 
-import { StrictMode } from "react";
-
-import Modal from "@/components/modals/Modal";
 import RegisterModal from "@/components/modals/RegisterModal";
 import SignInModal from "@/components/modals/SignInModal";
 import { Toaster } from "react-hot-toast";
@@ -18,13 +15,11 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-black h-screen">
-        <Toaster />
-        <RegisterModal />
-        <SignInModal />
-        {children}
-      </body>
-    </html>
+    <>
+      <Toaster />
+      <RegisterModal />
+      <SignInModal />
+      {children}
+    </>
   );
 }

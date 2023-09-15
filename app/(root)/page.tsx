@@ -1,9 +1,14 @@
+"use client";
+
 import Header from "@/components/shared/Main/Header";
 
 import { useSession } from "next-auth/react";
 
 export default function Home() {
-  // const { data: session } = useSession();
+  const { data: session, status } = useSession();
+
+  console.log("Home useStatuss: ", status);
+  console.log("Home useSession: ", session);
 
   // if (!session) {
   //   return (

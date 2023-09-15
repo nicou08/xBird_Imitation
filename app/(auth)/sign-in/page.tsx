@@ -4,9 +4,15 @@ import useSigninModal from "@/hooks/useSignInModal";
 import { useCallback } from "react";
 
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { sign } from "crypto";
 
 export default function Welcome() {
+  const session = useSession();
+
+  console.log("Sing-in useSession: ", session);
+
   const signInModal = useSigninModal();
 
   const onClick = useCallback(() => {

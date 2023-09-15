@@ -1,6 +1,9 @@
 import "./globals.css";
 
 import NextAuthProvider from "@/context/NextAuthProvider";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -9,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${inter.className} bg-black h-screen`}>
         <NextAuthProvider>{children}</NextAuthProvider>
       </body>
     </html>

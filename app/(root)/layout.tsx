@@ -21,13 +21,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-black h-screen`}>
-        <NextAuthProvider>
-          <Toaster />
-          <MainContent>{children}</MainContent>
-        </NextAuthProvider>
-      </body>
-    </html>
+    <>
+      <Toaster />
+      <MainContent>{children}</MainContent>
+    </>
   );
 }
