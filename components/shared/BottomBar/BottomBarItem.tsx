@@ -3,7 +3,6 @@ import { useRouter, usePathname } from "next/navigation";
 import { IconType } from "react-icons";
 
 interface LeftSideBarItemProps {
-  key: string;
   label: string;
   route: string;
   icon: React.ReactElement;
@@ -11,13 +10,12 @@ interface LeftSideBarItemProps {
 }
 
 const BottomBarItem: React.FC<LeftSideBarItemProps> = ({
-  key,
   label,
   route,
   icon,
 }) => {
   return (
-    <Link href={route} key={key} className="flex flex-col items-center ">
+    <Link href={route} key={label} className="flex flex-col items-center ">
       <div>{icon}</div>
     </Link>
   );

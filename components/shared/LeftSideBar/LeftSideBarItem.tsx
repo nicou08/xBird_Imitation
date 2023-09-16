@@ -4,14 +4,12 @@ import { IconType } from "react-icons";
 import { signOut } from "next-auth/react";
 
 const LeftSideBarItem = ({
-  key,
   label,
   route,
   icon,
   onClick,
   auth,
 }: {
-  key: string;
   label: string;
   route: string;
   icon: React.ReactElement;
@@ -63,7 +61,7 @@ const LeftSideBarItem = ({
   }
 
   return (
-    <Link href={route} key={key} className="flex flex-row items-center ">
+    <Link href={route} key={label} className="flex flex-row items-center ">
       <div
         className="
           relative 
