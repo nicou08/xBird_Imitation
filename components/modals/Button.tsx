@@ -2,8 +2,8 @@
 
 interface ButtonProps {
   label: string;
-  secondary: boolean;
-  fullWidth: boolean;
+  secondary?: boolean;
+  fullWidth?: boolean;
   large?: boolean;
   onClick: () => void;
   disabled?: boolean;
@@ -27,6 +27,7 @@ const Button: React.FC<ButtonProps> = ({
         disabled:opacity-70
         disabled:cursor-not-allowed
         rounded-full
+        text-base-semibold
         hover:opacity-80
         transition
         border-2

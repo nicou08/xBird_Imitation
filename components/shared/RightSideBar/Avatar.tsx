@@ -20,7 +20,7 @@ const Avatar = ({ userId, isLarge, hasBorder }: AvatarProps) => {
   const onClick = useCallback(
     (e: any) => {
       e.stopPropagation();
-      router.push(`/profile/${userId}`);
+      router.push(`/users/${userId}`);
     },
     [router, userId]
   );
