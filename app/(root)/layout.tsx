@@ -1,11 +1,11 @@
 import "../globals.css";
 
-import NextAuthProvider from "@/context/NextAuthProvider";
 import { Toaster } from "react-hot-toast";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import EditModal from "@/components/modals/EditModal";
 import MainContent from "@/components/shared/content";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,6 +26,7 @@ export default function MainLayout({
   return (
     <>
       <Toaster />
+      <EditModal />
       <MainContent>{children}</MainContent>
     </>
   );

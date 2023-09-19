@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { BiCalendar } from "react-icons/bi";
 import { useMemo } from "react";
 
+import useEditModal from "@/hooks/useEditModal";
 import useUser from "@/hooks/useUser";
 import userCurrentUser from "@/hooks/useCurrentUser";
 import Button from "../modals/Button";
@@ -14,6 +15,8 @@ const UserBio = ({ userId }: { userId: string }) => {
   // console.log("currentUser:", currentUser);
   // console.log("fetchedUser:", user);
 
+  const editModal = useEditModal();
+
   const createdAt = useMemo(() => {
     if (!user?.createdAt) {
       return null;
@@ -22,13 +25,13 @@ const UserBio = ({ userId }: { userId: string }) => {
     return format(new Date(user.createdAt), "MMMM yyyy");
   }, [user?.createdAt]);
 
-  console.log("createdAt:", createdAt);
+  //console.log("createdAt:", createdAt);
 
   return (
     <div className="border-b-[1px] border-neutral-800 pb-4">
       <div className="flex justify-end p-2">
         {currentUser?.id === userId ? (
-          <Button secondary label="Edit" onClick={() => {}} />
+          <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
           <Button secondary label="Follow" onClick={() => {}} />
         )}
