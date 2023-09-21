@@ -2,6 +2,7 @@ import { BsBell, BsPerson, BsPeople, BsHouse } from "react-icons/bs";
 import { HiOutlineUserGroup } from "react-icons/hi";
 import { BiHomeCircle, BiSearch } from "react-icons/bi";
 
+
 export const sidebarLinks = [
   {
     imgURL: "/assets/home.svg",
@@ -29,7 +30,7 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/user.svg",
-    route: "/profile",
+    route: `/users/12345`,
     label: "Profile",
     icon: <BsPerson size={30} color="white" />,
   },

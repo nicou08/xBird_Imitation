@@ -5,14 +5,17 @@ import LeftSideBarLogo from "./LeftSideBarLogo";
 import LeftSideBarItem from "./LeftSideBarItem";
 import TweetButton from "./TweetButton";
 
-import { signOut } from "next-auth/react";
+import userCurrentUser from "@/hooks/useCurrentUser";
 
+import { signOut } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
 
 const LeftSideBar = () => {
   // const router = useRouter();
   // const pathname = usePathname();
+
+  const { data: currentUser } = userCurrentUser();
 
   return (
     <section className="hidden md:block col-span-1 h-full pr-4 md:pr-6">
@@ -24,15 +27,25 @@ const LeftSideBar = () => {
             // const isActive =
             //   (pathname.includes(link.route) && link.route.length > 1) ||
             //   pathname === link.route;
-
-            return (
-              <LeftSideBarItem
-                key={link.label}
-                label={link.label}
-                route={link.route}
-                icon={link.icon}
-              />
-            );
+            if (link.label === "Profile") {
+              return (
+                <LeftSideBarItem
+                  key={link.label}
+                  label={link.label}
+                  route={`/users/${currentUser?.id}`}
+                  icon={link.icon}
+                />
+              );
+            } else {
+              return (
+                <LeftSideBarItem
+                  key={link.label}
+                  label={link.label}
+                  route={link.route}
+                  icon={link.icon}
+                />
+              );
+            }
           })}
 
           <TweetButton />

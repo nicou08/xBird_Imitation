@@ -1,6 +1,8 @@
 "use client";
 
 import Header from "@/components/shared/Main/Header";
+import Form from "@/components/forms/Form";
+import PostFeed from "@/components/posts/PostFeed";
 
 import { useSession } from "next-auth/react";
 
@@ -10,21 +12,11 @@ export default function Home() {
   console.log("Home useStatuss: ", status);
   console.log("Home useSession: ", session);
 
-  // if (!session) {
-  //   return (
-  //     <>
-  //       <div className="text-light-1">No go fam</div>
-  //     </>
-  //   );
-  // }
-
   return (
     <>
       <Header label="Home" />
-      <h1 className="head-text text-left">
-        Tweeterrr X12345 1234 5123 45 123 34 56
-      </h1>
-      <p className="text-light-1"> Test of the frame asdfasdfasdf</p>
+      <Form placeholder="What's Happening?" />
+      <PostFeed />
     </>
   );
 }

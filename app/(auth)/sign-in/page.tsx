@@ -1,12 +1,10 @@
 "use client";
 
 import useSigninModal from "@/hooks/useSignInModal";
-import { useCallback } from "react";
 
+import { useCallback } from "react";
 import Image from "next/image";
-import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
-import { sign } from "crypto";
 
 export default function Welcome() {
   const session = useSession();

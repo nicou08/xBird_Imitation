@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { IconType } from "react-icons";
 import { signOut } from "next-auth/react";
 
 const LeftSideBarItem = ({
