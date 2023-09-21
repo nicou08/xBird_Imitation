@@ -5,6 +5,8 @@ import { useMemo } from "react";
 import useEditModal from "@/hooks/useEditModal";
 import useUser from "@/hooks/useUser";
 import userCurrentUser from "@/hooks/useCurrentUser";
+import useFollow from "@/hooks/useFollow";
+
 import Button from "../modals/Button";
 
 const UserBio = ({ userId }: { userId: string }) => {
@@ -16,6 +18,8 @@ const UserBio = ({ userId }: { userId: string }) => {
   // console.log("fetchedUser:", user);
 
   const editModal = useEditModal();
+
+  const { isFollowing, toggleFollow } = useFollow(userId);
 
   const createdAt = useMemo(() => {
     if (!user?.createdAt) {
@@ -33,7 +37,12 @@ const UserBio = ({ userId }: { userId: string }) => {
         {currentUser?.id === userId ? (
           <Button secondary label="Edit" onClick={editModal.onOpen} />
         ) : (
-          <Button secondary label="Follow" onClick={() => {}} />
+          <Button
+            secondary={!isFollowing}
+            label={isFollowing ? "Unfollow" : "Follow"}
+            onClick={toggleFollow}
+            outline={isFollowing}
+          />
         )}
       </div>
       <div className="mt-8 px-4">

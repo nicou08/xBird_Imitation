@@ -4,9 +4,11 @@ import { ClipLoader } from "react-spinners";
 import { useParams } from "next/navigation";
 
 import useUser from "@/hooks/useUser";
+
 import Header from "@/components/shared/Main/Header";
 import UserHero from "@/components/users/UserHero";
 import UserBio from "@/components/users/UserBio";
+import PostFeed from "@/components/posts/PostFeed";
 
 // The useRouter hook should be imported from next/navigation and not next/router when using the App Router
 // The pathname string has been removed and is replaced by usePathname()
@@ -30,12 +32,12 @@ const userView = () => {
   }
 
   return (
-    <div>
+    <>
       <Header label={user.name} showBackArrow />
       <UserHero userId={userId as string} />
       <UserBio userId={userId as string} />
-      <div className="text-light-1">2what uppp</div>
-    </div>
+      <PostFeed userId={userId as string} />
+    </>
   );
 };
 

@@ -3,20 +3,24 @@ import serverAuth from "@/lib/serverAuth";
 
 export async function GET(
   req: Request,
-  { params }: { params?: { userId?: string } } = { params: {} } // params is optional and defaults to an empty object
+  { params }: { params?: { userId?: string } } // params is optional and defaults to an empty object
 ) {
   if (req.method !== "GET") {
     return Response.error();
   }
-  console.log("POSTS GET request");
-  console.log("POSTS GET ROUTE params: ", params?.userId);
+
+  const { searchParams } = new URL(req.url);
+  console.log("searchParams: ", searchParams);
+  // console.log("POSTS GET ROUTE params: ", params?.userId);
 
   try {
-    const userId = params?.userId;
+    const userId = searchParams.get("userId");
+    console.log("userId: ", userId);
 
     let posts;
 
     if (userId && typeof userId === "string") {
+      console.log("userId was provided: ", userId);
       posts = await prisma.post.findMany({
         where: {
           userId: userId, //
@@ -24,6 +28,9 @@ export async function GET(
         include: {
           user: true,
           comments: true,
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       });
     } else {
