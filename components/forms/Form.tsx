@@ -17,7 +17,7 @@ const Form = ({
 }: {
   placeholder: string;
   isComment?: boolean;
-  postId?: boolean;
+  postId?: string;
 }) => {
   const { data: currentUser } = userCurrentUser();
   const { mutate: mutatePosts } = usePosts();

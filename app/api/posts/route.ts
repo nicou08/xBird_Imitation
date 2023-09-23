@@ -10,7 +10,7 @@ export async function GET(
   }
 
   const { searchParams } = new URL(req.url);
-  console.log("searchParams: ", searchParams);
+  // console.log("searchParams: ", searchParams);
   // console.log("POSTS GET ROUTE params: ", params?.userId);
 
   try {

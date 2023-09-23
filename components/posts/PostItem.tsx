@@ -2,9 +2,10 @@ import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { formatDistanceToNowStrict } from "date-fns";
 
-import { AiOutlineHeart, AiOutlineMessage } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineMessage, AiFillHeart } from "react-icons/ai";
 
 import userCurrentUser from "@/hooks/useCurrentUser";
+import useLike from "@/hooks/useLike";
 
 import Avatar from "@/components/shared/RightSideBar/Avatar";
 
@@ -18,8 +19,9 @@ const PostItem = ({
   const router = useRouter();
 
   const { data: currentUser } = userCurrentUser();
+  const { hasLiked, toggleLike } = useLike({ postId: data.id, userId });
 
-  const LikedIcon = AiOutlineHeart;
+  const LikedIcon = hasLiked ? AiFillHeart : AiOutlineHeart;
 
   const goToUser = useCallback(
     (event: any) => {
@@ -35,9 +37,14 @@ const PostItem = ({
     router.push(`/posts/${data.id}`);
   }, [router, data.id]);
 
-  const onLike = useCallback((event: any) => {
-    event.stopPropagation();
-  }, []);
+  const onLike = useCallback(
+    (event: any) => {
+      event.stopPropagation();
+
+      toggleLike();
+    },
+    [toggleLike]
+  );
 
   const createAt = useMemo(() => {
     if (!data?.createdAt) {
@@ -92,11 +99,11 @@ const PostItem = ({
             </div>
             <div
               onClick={onLike}
-              className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-red-500"
+              className="flex flex-row items-center text-neutral-500 gap-2 cursor-pointer transition hover:text-red-800"
             >
-              {/* <LikeIcon color={hasLiked ? "red" : ""} size={20} /> */}
-              <LikedIcon color={""} size={20} />
-              <div>&nbsp;{data.comments?.length}</div>
+              <LikedIcon color={hasLiked ? "red" : ""} size={20} />
+              {/* <LikedIcon color={""} size={20} /> */}
+              <div>&nbsp;{data.likedIds?.length}</div>
             </div>
           </div>
         </div>
