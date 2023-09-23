@@ -8,6 +8,7 @@ import usePost from "@/hooks/usePost";
 import Header from "@/components/shared/Main/Header";
 import Form from "@/components/forms/Form";
 import PostItem from "@/components/posts/PostItem";
+import CommentFeed from "@/components/posts/CommentFeed";
 
 const PostView = ({ params }: { params: { postId: string } }) => {
   const postId = params.postId;
@@ -28,6 +29,7 @@ const PostView = ({ params }: { params: { postId: string } }) => {
       <Header showBackArrow label="Tweet" />
       <PostItem data={fetchedPost} />
       <Form postId={postId as string} isComment placeholder="Reply" />
+      <CommentFeed comments={fetchedPost?.comments} />
     </>
   );
 };

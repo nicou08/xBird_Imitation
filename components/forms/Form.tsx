@@ -6,9 +6,11 @@ import { useState, useCallback } from "react";
 
 import userCurrentUser from "@/hooks/useCurrentUser";
 import usePosts from "@/hooks/usePosts";
+import usePost from "@/hooks/usePost";
 
 import Button from "@/components/modals/Button";
 import Avatar from "@/components/shared/RightSideBar/Avatar";
+import { mutate } from "swr";
 
 const Form = ({
   placeholder,
@@ -21,6 +23,7 @@ const Form = ({
 }) => {
   const { data: currentUser } = userCurrentUser();
   const { mutate: mutatePosts } = usePosts();
+  const { mutate: mutatePost } = usePost(postId as string);
 
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -29,10 +32,10 @@ const Form = ({
     console.log("First");
     try {
       setIsLoading(true);
-      //const url = isComment ? `/api/comments?post` : `/api/posts`;
+      const url = isComment ? `/api/comments?postId=${postId}` : "/api/posts";
 
       console.log("Form onSubmit: ", body);
-      await axios.post("/api/posts", { body });
+      await axios.post(url, { body });
 
       toast.success("Tweet created!");
 
@@ -41,13 +44,14 @@ const Form = ({
       // Once we create a new post, we want to refetch the posts,
       // including the new one we just created.
       mutatePosts();
+      mutatePost();
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast.error("Something went wrongg");
     } finally {
       setIsLoading(false);
     }
-  }, [body, mutatePosts]);
+  }, [body, mutatePosts, isComment, postId, mutatePost]);
 
   return (
     <div className="border-b-[1px] border-neutral-800 px-5 py-2">
