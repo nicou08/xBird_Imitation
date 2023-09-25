@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { BsDot } from "react-icons/bs";
 
 const LeftSideBarItem = ({
   label,
@@ -7,12 +8,14 @@ const LeftSideBarItem = ({
   icon,
   onClick,
   auth,
+  alert,
 }: {
   label: string;
   route: string;
   icon: React.ReactElement;
   onClick?: () => void;
   auth?: boolean;
+  alert?: boolean;
 }) => {
   if (label === "Logout") {
     return (
@@ -76,6 +79,9 @@ const LeftSideBarItem = ({
           lg:hidden"
       >
         {icon}
+        {alert ? (
+          <BsDot className="text-sky-500 absolute -top-4 left-0" size={70} />
+        ) : null}
       </div>
       <div
         className="
@@ -96,6 +102,9 @@ const LeftSideBarItem = ({
         <p className="hidden lg:block text-heading4-medium text-light-1">
           {label}&nbsp;&nbsp;&nbsp;
         </p>
+        {alert ? (
+          <BsDot className="text-sky-500 absolute -top-4 left-0" size={70} />
+        ) : null}
       </div>
     </Link>
   );

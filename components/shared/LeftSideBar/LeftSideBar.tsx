@@ -36,6 +36,16 @@ const LeftSideBar = () => {
                   icon={link.icon}
                 />
               );
+            } else if (link.label === "Notifications") {
+              return (
+                <LeftSideBarItem
+                  key={link.label}
+                  label={link.label}
+                  route={link.route}
+                  icon={link.icon}
+                  alert={currentUser?.hasNotifications}
+                />
+              );
             } else {
               return (
                 <LeftSideBarItem

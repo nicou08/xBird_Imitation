@@ -27,6 +27,35 @@ export async function POST(req: Request) {
 
     updatedLikedIds.push(currentUser.id);
 
+    // This is the notification
+    try {
+      const post = await prisma.post.findUnique({
+        where: {
+          id: postId,
+        },
+      });
+
+      if (post?.userId) {
+        await prisma.notification.create({
+          data: {
+            body: "Someone liked your tweet!",
+            userId: post.userId,
+          },
+        });
+
+        await prisma.user.update({
+          where: {
+            id: post.userId,
+          },
+          data: {
+            hasNotifications: true,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
     const updatedPost = await prisma.post.update({
       where: {
         id: postId,
@@ -44,7 +73,7 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
-  if (req.method !== "POST") return { status: 405 };
+  if (req.method !== "DELETE") return { status: 405 };
 
   try {
     const { postId } = await req.json();
