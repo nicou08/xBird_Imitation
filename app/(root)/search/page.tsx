@@ -1,11 +1,13 @@
-import { getServerSession } from "next-auth";
+"use client";
+
+//import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOpt";
 
 import Header from "@/components/shared/Main/Header";
 
 export default async function Search() {
-  const session = await getServerSession(authOptions);
-  console.log("Search getServerSession: ", session);
+  // const session = await getServerSession(authOptions);
+  // console.log("Search getServerSession: ", session);
 
   return (
     <>

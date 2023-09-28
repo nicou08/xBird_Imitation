@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/shared/Main/Header";
 
 export default function Search() {

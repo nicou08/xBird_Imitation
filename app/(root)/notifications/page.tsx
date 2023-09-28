@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/shared/Main/Header";
 import NotificationFeed from "@/components/modals/NotificationFeed";
 
