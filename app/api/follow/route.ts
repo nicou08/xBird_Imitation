@@ -1,5 +1,6 @@
 import serverAuth from "@/lib/serverAuth";
 import prisma from "@/lib/prismadb";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   if (req.method !== "POST") {
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
 
     if (!user) {
       console.log("Invalid ID");
-      return Response.json({ error: "Invalid ID" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
     let updatedFollowingIds = [...(user.followingIds || [])];
@@ -59,7 +60,7 @@ export async function POST(req: Request) {
       console.log(error);
     }
 
-    return Response.json(updatedUser);
+    return NextResponse.json(updatedUser);
   } catch (error) {
     console.error(error);
     return Response.error();
@@ -88,7 +89,7 @@ export async function DELETE(req: Request) {
 
     if (!user) {
       console.log("Invalid ID");
-      return Response.json({ error: "Invalid ID" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
     }
 
     let updatedFollowingIds = [...(user.followingIds || [])];
@@ -106,7 +107,7 @@ export async function DELETE(req: Request) {
       },
     });
 
-    return Response.json(updatedUser);
+    return NextResponse.json(updatedUser);
   } catch (error) {
     console.error(error);
     return Response.error();

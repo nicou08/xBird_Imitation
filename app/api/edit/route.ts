@@ -1,5 +1,6 @@
 import serverAuth from "@/lib/serverAuth";
 import prisma from "@/lib/prismadb";
+import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request) {
   if (req.method !== "PATCH") {
@@ -38,9 +39,9 @@ export async function PATCH(req: Request) {
       },
     });
     console.log("api route UPDATEDUSER", updatedUser);
-    return Response.json(updatedUser);
+    return NextResponse.json(updatedUser);
   } catch (err) {
     console.error(err);
-    return Response.error();
+    return NextResponse.error();
   }
 }

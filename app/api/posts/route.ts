@@ -1,5 +1,6 @@
 import prisma from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
+import { NextResponse } from "next/server";
 
 export async function GET(
   req: Request,
@@ -45,7 +46,7 @@ export async function GET(
       });
     }
 
-    return Response.json(posts);
+    return NextResponse.json(posts);
   } catch (err) {
     console.error(err);
     return Response.error();
@@ -68,5 +69,5 @@ export async function POST(req: Request) {
     },
   });
 
-  return Response.json(post);
+  return NextResponse.json(post);
 }

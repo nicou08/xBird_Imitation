@@ -1,4 +1,5 @@
 import prisma from "@/lib/prismadb";
+import { NextResponse } from "next/server";
 
 export async function GET(
   req: Request,
@@ -29,7 +30,7 @@ export async function GET(
       },
     });
 
-    return Response.json({ ...existingUser, followersCount });
+    return NextResponse.json({ ...existingUser, followersCount });
   } catch (err) {
     console.error(err);
     return Response.error();

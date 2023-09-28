@@ -1,5 +1,6 @@
 import prisma from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
+import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
@@ -55,7 +56,7 @@ export async function POST(
       console.log(error);
     }
 
-    return Response.json(comment);
+    return NextResponse.json(comment);
   } catch (error) {
     console.error(error);
     return { status: 500 };

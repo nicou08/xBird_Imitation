@@ -1,5 +1,6 @@
 import prisma from "@/lib/prismadb";
 import serverAuth from "@/lib/serverAuth";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   if (req.method !== "POST") return { status: 405 };
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return Response.json(updatedPost);
+    return NextResponse.json(updatedPost);
   } catch (error) {
     console.error(error);
     return { status: 500 };
@@ -109,7 +110,7 @@ export async function DELETE(req: Request) {
       },
     });
 
-    return Response.json(updatedPost);
+    return NextResponse.json(updatedPost);
   } catch (error) {
     console.error(error);
     return { status: 500 };
