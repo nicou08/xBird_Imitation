@@ -1,9 +1,10 @@
-"use client";
+//"use client";
 
 //import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOpt";
 
 import Header from "@/components/shared/Main/Header";
+export const dynamic = "force-dynamic";
 
 export default async function Search() {
   // const session = await getServerSession(authOptions);
