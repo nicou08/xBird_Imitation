@@ -91,7 +91,7 @@ const Form = ({
             <Button
               disabled={isLoading || !body}
               onClick={onSubmit}
-              label="Tweet"
+              label="Post X"
             />
           </div>
         </div>

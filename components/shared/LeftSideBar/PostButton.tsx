@@ -45,7 +45,7 @@ const TweetButton = () => {
           text-light-1
           "
         >
-          Tweet
+          Post X
         </p>
       </div>
     </Link>

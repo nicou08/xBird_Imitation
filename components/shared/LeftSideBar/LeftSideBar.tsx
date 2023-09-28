@@ -3,7 +3,7 @@
 import { sidebarLinks } from "@/constants";
 import LeftSideBarLogo from "./LeftSideBarLogo";
 import LeftSideBarItem from "./LeftSideBarItem";
-import TweetButton from "./TweetButton";
+import PostButton from "./PostButton";
 
 import userCurrentUser from "@/hooks/useCurrentUser";
 
@@ -58,7 +58,7 @@ const LeftSideBar = () => {
             }
           })}
 
-          <TweetButton />
+          <PostButton />
           <div className="sticky top-[93vh]">
             <LeftSideBarItem
               key={"Logout"}
