@@ -5,7 +5,9 @@ import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
 const useNotifications = (userId?: string) => {
-  const url = userId ? `/api/notifications/${userId}` : null;
+  const baseURL = process.env.URL;
+
+  const url = userId ? `${baseURL}/api/notifications/${userId}` : null;
 
   const { data, error, isLoading, mutate } = useSWR(url, fetcher);
 

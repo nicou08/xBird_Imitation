@@ -5,7 +5,12 @@ import useSWR from "swr";
 import fetcher from "@/lib/fetcher";
 
 const useUsers = () => {
-  const { data, error, isLoading, mutate } = useSWR("/api/users", fetcher);
+  const baseURL = process.env.URL;
+
+  const { data, error, isLoading, mutate } = useSWR(
+    `${baseURL}/api/users`,
+    fetcher
+  );
 
   return {
     data,

@@ -28,11 +28,15 @@ const Form = ({
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const baseURL = process.env.URL;
+
   const onSubmit = useCallback(async () => {
     console.log("First");
     try {
       setIsLoading(true);
-      const url = isComment ? `/api/comments?postId=${postId}` : "/api/posts";
+      const url = isComment
+        ? `${baseURL}/api/comments?postId=${postId}`
+        : `${baseURL}/api/posts`;
 
       console.log("Form onSubmit: ", body);
       await axios.post(url, { body });

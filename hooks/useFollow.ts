@@ -7,6 +7,8 @@ import userCurrentUser from "./useCurrentUser";
 import useUser from "./useUser";
 
 const useFollow = (userId: string) => {
+  const baseURL = process.env.URL;
+
   const { data: currentUser, mutate: mutateCurrentUser } = userCurrentUser();
   const { mutate: mutateFetchedUser } = useUser(userId);
 
@@ -27,10 +29,11 @@ const useFollow = (userId: string) => {
       if (isFollowing) {
         // In this case, we need data because it is how DELETE accepts
         // a request
-        request = () => axios.delete("/api/follow", { data: { userId } });
+        request = () =>
+          axios.delete(`${baseURL}/api/follow`, { data: { userId } });
       } else {
         // But in post you can just pass it on like this the userId
-        request = () => axios.post("/api/follow", { userId });
+        request = () => axios.post(`${baseURL}/api/follow`, { userId });
       }
 
       await request();
