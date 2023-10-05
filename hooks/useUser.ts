@@ -11,7 +11,7 @@ const useUser = (userId: string) => {
   console.log("Here process.env.URL", process.env.NEXT_PUBLIC_URL);
 
   const { data, error, isLoading, mutate } = useSWR(
-    userId ? `${baseURL}/api/users/${userId}` : null,
+    userId ? `/api/users/${userId}` : null,
     fetcher
   );
   return {
