@@ -8,6 +8,7 @@ const useUser = (userId: string) => {
   const baseURL = process.env.URL;
 
   console.log("Here useUser baseURL:: ", baseURL);
+  console.log("Here process.env.URL", process.env.URL);
 
   const { data, error, isLoading, mutate } = useSWR(
     userId ? `${baseURL}/api/users/${userId}` : null,
