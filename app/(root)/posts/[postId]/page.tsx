@@ -1,7 +1,6 @@
 // "use client";
 
 import { ClipLoader } from "react-spinners";
-import { useSearchParams } from "next/navigation";
 
 import usePost from "@/hooks/usePost";
 
@@ -10,7 +9,7 @@ import Form from "@/components/forms/Form";
 import PostItem from "@/components/posts/PostItem";
 import CommentFeed from "@/components/posts/CommentFeed";
 
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 
 const PostView = ({ params }: { params: { postId: string } }) => {
   const postId = params.postId;

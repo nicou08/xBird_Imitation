@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   if (req.method !== "GET") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   try {
@@ -16,6 +16,9 @@ export async function GET(req: Request) {
     return NextResponse.json(users);
   } catch (err) {
     console.error(err);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

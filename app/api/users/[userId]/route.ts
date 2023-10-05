@@ -6,14 +6,14 @@ export async function GET(
   context: { params: { userId: string } }
 ) {
   if (req.method !== "GET") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   try {
     const userId = context.params.userId;
 
     if (!userId) {
-      throw new Error("userId is invalid");
+      return NextResponse.json({ error: "userId is invalid" }, { status: 400 });
     }
 
     const existingUser = await prisma.user.findUnique({
@@ -33,6 +33,9 @@ export async function GET(
     return NextResponse.json({ ...existingUser, followersCount });
   } catch (err) {
     console.error(err);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

@@ -3,10 +3,12 @@ import serverAuth from "@/lib/serverAuth";
 import { NextResponse } from "next/server";
 
 export async function POST(
-  req: Request,
-  { params }: { params: { postId: string } }
+  req: Request
+  // { params }: { params: { postId: string } }
 ) {
-  if (req.method !== "POST") return { status: 405 };
+  if (req.method !== "POST") {
+    NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
+  }
 
   try {
     const { currentUser } = await serverAuth();
@@ -59,6 +61,9 @@ export async function POST(
     return NextResponse.json(comment);
   } catch (error) {
     console.error(error);
-    return { status: 500 };
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

@@ -6,7 +6,7 @@ import prisma from "@/lib/prismadb";
 export async function POST(req: Request) {
   console.log("BEFOREE");
   if (req.method !== "POST") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
   console.log("AFTERRR");
   try {
@@ -30,6 +30,9 @@ export async function POST(req: Request) {
     return NextResponse.json(user);
   } catch (err) {
     console.error(err);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   if (req.method !== "POST") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   try {
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     const { currentUser } = await serverAuth();
 
     if (!userId || typeof userId !== "string") {
-      return Response.error();
+      return NextResponse.json({ error: "userId is invalid" }, { status: 400 });
     }
 
     const user = await prisma.user.findUnique({
@@ -63,13 +63,16 @@ export async function POST(req: Request) {
     return NextResponse.json(updatedUser);
   } catch (error) {
     console.error(error);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }
 
 export async function DELETE(req: Request) {
   if (req.method !== "DELETE") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   try {
@@ -78,7 +81,7 @@ export async function DELETE(req: Request) {
     const { currentUser } = await serverAuth();
 
     if (!userId || typeof userId !== "string") {
-      return Response.error();
+      return NextResponse.json({ error: "userId is invalid" }, { status: 400 });
     }
 
     const user = await prisma.user.findUnique({
@@ -110,6 +113,9 @@ export async function DELETE(req: Request) {
     return NextResponse.json(updatedUser);
   } catch (error) {
     console.error(error);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

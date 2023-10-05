@@ -7,7 +7,7 @@ export async function GET(
   { params }: { params?: { userId?: string } } // params is optional and defaults to an empty object
 ) {
   if (req.method !== "GET") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   const { searchParams } = new URL(req.url);
@@ -49,13 +49,16 @@ export async function GET(
     return NextResponse.json(posts);
   } catch (err) {
     console.error(err);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }
 
 export async function POST(req: Request) {
   if (req.method !== "POST") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   const { currentUser } = await serverAuth();

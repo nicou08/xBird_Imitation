@@ -4,7 +4,8 @@
 import { authOptions } from "@/lib/authOpt";
 
 import Header from "@/components/shared/Main/Header";
-export const dynamic = "force-dynamic";
+
+//export const dynamic = "force-dynamic";
 
 export default async function Search() {
   // const session = await getServerSession(authOptions);

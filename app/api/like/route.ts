@@ -11,7 +11,7 @@ export async function POST(req: Request) {
     const { currentUser } = await serverAuth();
 
     if (!postId || typeof postId !== "string") {
-      throw new Error("postId is invalid");
+      return NextResponse.json({ error: "postId is invalid" }, { status: 400 });
     }
 
     const post = await prisma.post.findUnique({
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     });
 
     if (!post) {
-      throw new Error("Post not found");
+      return NextResponse.json({ error: "Post not found" }, { status: 400 });
     }
 
     let updatedLikedIds = [...(post.likedIds || [])];
@@ -69,12 +69,17 @@ export async function POST(req: Request) {
     return NextResponse.json(updatedPost);
   } catch (error) {
     console.error(error);
-    return { status: 500 };
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }
 
 export async function DELETE(req: Request) {
-  if (req.method !== "DELETE") return { status: 405 };
+  if (req.method !== "DELETE") {
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
+  }
 
   try {
     const { postId } = await req.json();
@@ -82,7 +87,7 @@ export async function DELETE(req: Request) {
     const { currentUser } = await serverAuth();
 
     if (!postId || typeof postId !== "string") {
-      throw new Error("postId is invalid");
+      return NextResponse.json({ error: "postId is invalid" }, { status: 400 });
     }
 
     const post = await prisma.post.findUnique({
@@ -92,7 +97,7 @@ export async function DELETE(req: Request) {
     });
 
     if (!post) {
-      throw new Error("Post not found");
+      return NextResponse.json({ error: "Post not found" }, { status: 400 });
     }
 
     let updatedLikedIds = [...(post.likedIds || [])];
@@ -113,6 +118,9 @@ export async function DELETE(req: Request) {
     return NextResponse.json(updatedPost);
   } catch (error) {
     console.error(error);
-    return { status: 500 };
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

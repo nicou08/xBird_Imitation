@@ -8,7 +8,7 @@ import PostButton from "./PostButton";
 import userCurrentUser from "@/hooks/useCurrentUser";
 
 import { signOut } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+//import { usePathname, useRouter } from "next/navigation";
 import { BiLogOut } from "react-icons/bi";
 
 const LeftSideBar = () => {

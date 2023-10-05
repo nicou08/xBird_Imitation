@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: { postId: string } }
 ) {
   if (req.method !== "GET") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
 
   try {
@@ -14,7 +14,7 @@ export async function GET(
     const postId = params.postId;
 
     if (!postId || typeof postId !== "string") {
-      throw new Error("postId is invalid");
+      return NextResponse.json({ error: "postId is invalid" }, { status: 400 });
     }
 
     const post = await prisma.post.findUnique({
@@ -37,6 +37,9 @@ export async function GET(
     return NextResponse.json(post);
   } catch (error) {
     console.error(error);
-    return Response.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

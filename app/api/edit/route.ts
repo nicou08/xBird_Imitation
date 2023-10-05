@@ -4,14 +4,17 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request) {
   if (req.method !== "PATCH") {
-    return Response.error();
+    return NextResponse.json({ error: "Method Not Allowed" }, { status: 405 });
   }
   try {
     const { currentUser } = await serverAuth();
     const { name, username, bio, profileImage, coverImage } = currentUser;
     //onsole.log("api route CURRENTUSER", currentUser);
     if (!name || !username) {
-      return Response.error();
+      return NextResponse.json(
+        { error: "Method Not Allowed" },
+        { status: 404 }
+      );
     }
 
     const {
@@ -42,6 +45,9 @@ export async function PATCH(req: Request) {
     return NextResponse.json(updatedUser);
   } catch (err) {
     console.error(err);
-    return NextResponse.error();
+    return NextResponse.json(
+      { error: "Some Internal Server error" },
+      { status: 500 }
+    );
   }
 }

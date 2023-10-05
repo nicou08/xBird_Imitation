@@ -5,7 +5,7 @@ import Form from "@/components/forms/Form";
 import PostFeed from "@/components/posts/PostFeed";
 
 //import { useSession } from "next-auth/react";
-export const dynamic = "force-dynamic";
+//export const dynamic = "force-dynamic";
 
 export default function Home() {
   // const { data: session, status } = useSession();
