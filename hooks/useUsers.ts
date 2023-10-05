@@ -7,10 +7,9 @@ import fetcher from "@/lib/fetcher";
 const useUsers = () => {
   const baseURL = process.env.URL;
 
-  const { data, error, isLoading, mutate } = useSWR(
-    `${baseURL}/api/users`,
-    fetcher
-  );
+  console.log("Here baseURL:: ", baseURL);
+
+  const { data, error, isLoading, mutate } = useSWR(`/api/users`, fetcher);
 
   return {
     data,
