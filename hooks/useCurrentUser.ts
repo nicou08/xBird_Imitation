@@ -8,10 +8,7 @@ import fetcher from "@/lib/fetcher";
 const userCurrentUser = () => {
   const baseURL = process.env.URL;
 
-  const { data, error, isLoading, mutate } = useSWR(
-    `${baseURL}/api/current`,
-    fetcher
-  );
+  const { data, error, isLoading, mutate } = useSWR(`/api/current`, fetcher);
 
   return {
     data,
