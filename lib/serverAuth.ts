@@ -6,8 +6,7 @@ import { authOptions } from "./authOpt";
 const serverAuth = async () => {
   const session = await getServerSession(authOptions);
   console.log("serverAuth::session", session);
-  console.log("Hello from serverAuth");
-  console.log("MONGODB_URI", process.env.MONGODB_URI);
+  console.log("Hello from serverAuthh");
   console.log("serverAuth:prismadb", prisma);
   console.log("What is good");
   if (!session?.user?.email) {
