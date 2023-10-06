@@ -15,8 +15,6 @@ const RegisterModal = () => {
   const registerModal = useRegisterModal();
   const signInModal = useSigninModal();
 
-  const baseURL = process.env.URL;
-
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -47,7 +45,7 @@ const RegisterModal = () => {
 
       await axios({
         method: "post",
-        url: `${baseURL}/api/register`,
+        url: "/api/register",
         data: {
           email: email,
           username: username,

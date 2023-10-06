@@ -7,7 +7,7 @@ import fetcher from "@/lib/fetcher";
 const usePost = (postId: string) => {
   const baseURL = process.env.URL;
 
-  const url = postId ? `${baseURL}/api/posts/${postId}` : null;
+  const url = postId ? `/api/posts/${postId}` : null;
 
   const { data, error, isLoading, mutate } = useSWR(url, fetcher);
 

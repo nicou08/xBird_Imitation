@@ -6,7 +6,7 @@ import { authOptions } from "./authOpt";
 const serverAuth = async () => {
   const session = await getServerSession(authOptions);
   console.log("serverAuth:session", session);
-
+  console.log("serverAuth:prismadb", prisma);
   if (!session?.user?.email) {
     throw new Error("Not authenticated");
   }

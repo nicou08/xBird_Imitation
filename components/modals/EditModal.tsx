@@ -17,8 +17,6 @@ const EditModal = () => {
   const { mutate: mutateFetchedUser } = useUser(currentUser?.id);
   const editModal = useEditModal();
 
-  const baseURL = process.env.URL;
-
   //console.log("currentEditModalUserr: ", currentUser);
 
   // Data to change
@@ -53,7 +51,7 @@ const EditModal = () => {
       // console.log("uUsename: ", username);
       // console.log("bBio: ", bio);
       // console.log("nName: ", name);
-      await axios.patch(`${baseURL}/api/edit`, {
+      await axios.patch("/api/edit", {
         profileImage: profileImage,
         coverImage: coverImage,
         username: username,
