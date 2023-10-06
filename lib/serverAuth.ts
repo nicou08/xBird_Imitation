@@ -19,6 +19,7 @@ const serverAuth = async () => {
   });
 
   if (!currentUser) {
+    console.log("currentUser not found");
     throw new Error("Not signed in!");
   }
   console.log("serverAuth:currentUser", currentUser);
