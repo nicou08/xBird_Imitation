@@ -5,11 +5,14 @@ import useRegisterModal from "@/hooks/useRegisterModal";
 
 import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import Modal from "@/components/modals/Modal";
 import Input from "./Input";
 
 const SignInModal = () => {
+  const router = useRouter();
+
   const signInModal = useSigninModal();
   const registerModal = useRegisterModal();
 
@@ -29,15 +32,28 @@ const SignInModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-
-      await signIn("credentials", {
+      console.log("Before sign in axios");
+      // await signIn("credentials", {
+      //   email,
+      //   password,
+      //   callbackUrl: "/",
+      // });
+      const result = await signIn("credentials", {
         email,
         password,
-        callbackUrl: "/",
+        redirect: false,
       });
-
+      console.log("After sign in axios");
+      console.log("signIN result::", result);
+      if (result?.error) {
+        console.log("Error signing in!! ");
+        router.push("/sign-in");
+      } else {
+        router.push("/");
+      }
       signInModal.onClose();
     } catch (error) {
+      console.log("Error signing in!! ");
       console.log(error);
     } finally {
       setIsLoading(false);
