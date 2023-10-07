@@ -7,6 +7,8 @@ import BottomBar from "@/components/shared/BottomBar/BottomBar";
 import LeftSideBar from "@/components/shared/LeftSideBar/LeftSideBar";
 import RightSideBar from "@/components/shared/RightSideBar/RightSideBar";
 
+export const dynamic = "force-dynamic";
+
 const MainContent = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
 
