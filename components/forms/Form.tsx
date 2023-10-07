@@ -31,7 +31,7 @@ const Form = ({
   const baseURL = process.env.URL;
 
   const onSubmit = useCallback(async () => {
-    console.log("First");
+    //console.log("First");
     try {
       setIsLoading(true);
       const url = isComment ? `/api/comments?postId=${postId}` : `/api/posts`;

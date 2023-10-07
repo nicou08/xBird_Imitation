@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import { ClipLoader } from "react-spinners";
 
