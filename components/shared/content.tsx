@@ -10,6 +10,7 @@ import RightSideBar from "@/components/shared/RightSideBar/RightSideBar";
 export const dynamic = "force-dynamic";
 
 const MainContent = async ({ children }: { children: React.ReactNode }) => {
+  // Check if the user is logged in. If not, redirect to /sign-in
   const session = await getServerSession(authOptions);
 
   console.log("MainContent getServerSession:");
@@ -18,6 +19,8 @@ const MainContent = async ({ children }: { children: React.ReactNode }) => {
   if (session === null) {
     return redirect("/sign-in");
   }
+
+  // Slide function
 
   return (
     <>
@@ -33,7 +36,8 @@ const MainContent = async ({ children }: { children: React.ReactNode }) => {
                 lg:col-span-2
                 border-x[1px] 
                 border 
-                border-neutral-800"
+                border-neutral-800
+                pb-18"
             >
               {children}
             </section>

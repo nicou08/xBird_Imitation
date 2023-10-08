@@ -29,11 +29,10 @@ const useFollow = (userId: string) => {
       if (isFollowing) {
         // In this case, we need data because it is how DELETE accepts
         // a request
-        request = () =>
-          axios.delete(`${baseURL}/api/follow`, { data: { userId } });
+        request = () => axios.delete(`/api/follow`, { data: { userId } });
       } else {
         // But in post you can just pass it on like this the userId
-        request = () => axios.post(`${baseURL}/api/follow`, { userId });
+        request = () => axios.post(`/api/follow`, { userId });
       }
 
       await request();

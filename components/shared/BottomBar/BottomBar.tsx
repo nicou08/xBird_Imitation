@@ -20,7 +20,7 @@ const BottomBar = () => {
         border-neutral-800 
         pb-5
         pt-5
-        bg-opacity-75"
+        bg-black"
     >
       <div>
         <div className="grid grid-cols-5 text-light-1 text-heading4-medium">
