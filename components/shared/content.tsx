@@ -34,9 +34,9 @@ const MainContent = async ({ children }: { children: React.ReactNode }) => {
                 col-span-1
                 md:col-span-5
                 lg:col-span-2
-                border-x[1px] 
-                border 
-                border-neutral-800
+                md:border-x[1px] 
+                md:border 
+                md:border-neutral-800
                 pb-18"
             >
               {children}
